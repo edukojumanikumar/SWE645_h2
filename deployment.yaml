@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey-app
+  labels:
+    app: survey
+spec:
+  replicas: 3  # Number of replicas for high availability
+  selector:
+    matchLabels:
+      app: survey
+  template:
+    metadata:
+      labels:
+        app: survey
+    spec:
+      containers:
+      - name: survey-container
+        image: medukoju/survey-app:latest  # Replace with the correct image name if needed
+        ports:
+        - containerPort: 80
